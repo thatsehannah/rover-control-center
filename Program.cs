@@ -9,24 +9,17 @@
             MarsRover sojourner = new MarsRover("Sojourner", 1997);
             Satellite sputnik = new Satellite("Sputnik", 1957);
 
-            Rover[] rovers = { lunokhod, apollo, sojourner };
-            //DirectAll(rovers);
-            object[] allProbes = { lunokhod, apollo, sojourner, sputnik };
-
-            foreach(object probe in allProbes)
-            {
-                Console.WriteLine(probe.GetType());
-            }
-
+            IDirectable[] allProbes = { lunokhod, apollo, sojourner, sputnik };
+            DirectAll(allProbes);
         }
 
-        static void DirectAll(Rover[] rovers)
+        static void DirectAll(IDirectable[] probes)
         {
-            foreach (Rover rover in rovers)
+            foreach (IDirectable probe in probes)
             {
-                Console.WriteLine(rover.GetInfo());
-                Console.WriteLine(rover.Explore());
-                Console.WriteLine(rover.Collect());
+                Console.WriteLine(probe.GetInfo());
+                Console.WriteLine(probe.Explore());
+                Console.WriteLine(probe.Collect());
             }
         }
     }
